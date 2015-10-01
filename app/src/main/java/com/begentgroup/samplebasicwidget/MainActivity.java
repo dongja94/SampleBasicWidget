@@ -1,11 +1,13 @@
 package com.begentgroup.samplebasicwidget;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
         messageView = (TextView)findViewById(R.id.text_message);
         String text = getResources().getString(R.string.test_text);
         messageView.setText(Html.fromHtml(text));
+    }
+
+    public void onButtonClick(View view) {
+        Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
     }
 
     @Override
