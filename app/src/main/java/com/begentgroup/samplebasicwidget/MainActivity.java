@@ -6,11 +6,14 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    CheckBox enableView;
     TextView messageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +23,29 @@ public class MainActivity extends AppCompatActivity {
         messageView = (TextView)findViewById(R.id.text_message);
         String text = getResources().getString(R.string.test_text);
         messageView.setText(Html.fromHtml(text));
+
+        enableView = (CheckBox)findViewById(R.id.check_enable);
+        enableView.setChecked(true);
+
+        enableView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isForced) return;
+                Toast.makeText(MainActivity.this, "checked : " + isChecked, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    boolean isForced = false;
+
     public void onButtonClick(View view) {
-        Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
+        String checkedText = enableView.isChecked()?"Enable True":"Enable False";
+
+        Toast.makeText(this, checkedText, Toast.LENGTH_SHORT).show();
+
+        isForced = true;
+        enableView.setChecked(!enableView.isChecked());
+        isForced = false;
     }
 
     @Override
