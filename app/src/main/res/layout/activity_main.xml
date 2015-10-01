@@ -16,6 +16,7 @@
         android:textStyle="bold"
         android:singleLine="true"
         android:gravity="center"
-        android:id="@+id/text_message" />
+        android:id="@+id/text_message"
+        android:textIsSelectable="true"/>
 
 </RelativeLayout>
