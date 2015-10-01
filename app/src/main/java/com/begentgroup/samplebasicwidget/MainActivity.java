@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     CheckBox enableView;
     TextView messageView;
+    RadioGroup group;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +37,48 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "checked : " + isChecked, Toast.LENGTH_SHORT).show();
             }
         });
+
+        group = (RadioGroup)findViewById(R.id.radio_group);
+
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                String checkedText = "Not Setting";
+                switch(checkedId) {
+                    case R.id.radio_r1 :
+                        checkedText = "R1 Checked";
+                        break;
+                    case R.id.radio_r2 :
+                        checkedText = "R2 checked";
+                        break;
+
+                }
+                Toast.makeText(MainActivity.this, checkedText, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     boolean isForced = false;
 
     public void onButtonClick(View view) {
-        String checkedText = enableView.isChecked()?"Enable True":"Enable False";
+        int id = group.getCheckedRadioButtonId();
+        String checkedText = "Not Setting";
+        switch(id) {
+            case R.id.radio_r1 :
+                checkedText = "R1 Checked";
+                break;
+            case R.id.radio_r2 :
+                checkedText = "R2 checked";
+                break;
 
+        }
+//        String checkedText = enableView.isChecked()?"Enable True":"Enable False";
+//
         Toast.makeText(this, checkedText, Toast.LENGTH_SHORT).show();
-
-        isForced = true;
-        enableView.setChecked(!enableView.isChecked());
-        isForced = false;
+//
+//        isForced = true;
+//        enableView.setChecked(!enableView.isChecked());
+//        isForced = false;
     }
 
     @Override
