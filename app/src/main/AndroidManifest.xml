@@ -21,8 +21,11 @@
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".OtherActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity
+            android:name=".OtherActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity android:name=".ProgressActivity" >
         </activity>
     </application>
 

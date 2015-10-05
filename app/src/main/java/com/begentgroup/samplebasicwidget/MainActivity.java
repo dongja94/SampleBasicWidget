@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        messageView = (TextView)findViewById(R.id.text_message);
+        messageView = (TextView) findViewById(R.id.text_message);
         String text = getResources().getString(R.string.test_text);
         messageView.setText(Html.fromHtml(text));
 
-        enableView = (CheckBox)findViewById(R.id.check_enable);
+        enableView = (CheckBox) findViewById(R.id.check_enable);
         enableView.setChecked(true);
 
         enableView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -39,17 +39,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        group = (RadioGroup)findViewById(R.id.radio_group);
+        group = (RadioGroup) findViewById(R.id.radio_group);
 
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 String checkedText = "Not Setting";
-                switch(checkedId) {
-                    case R.id.radio_r1 :
+                switch (checkedId) {
+                    case R.id.radio_r1:
                         checkedText = "R1 Checked";
                         break;
-                    case R.id.radio_r2 :
+                    case R.id.radio_r2:
                         checkedText = "R2 checked";
                         break;
 
@@ -63,7 +63,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, OtherActivity.class);
         startActivity(intent);
     }
+
     boolean isForced = false;
+
+    public void onProgressClick(View view) {
+        Intent intent = new Intent(this, ProgressActivity.class);
+        startActivity(intent);
+    }
 
     public void onButtonClick(View view) {
         int id = group.getCheckedRadioButtonId();
