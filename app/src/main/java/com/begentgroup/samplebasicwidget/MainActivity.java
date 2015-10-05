@@ -1,5 +1,6 @@
 package com.begentgroup.samplebasicwidget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -58,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void onShowOther(View view) {
+        Intent intent = new Intent(this, OtherActivity.class);
+        startActivity(intent);
+    }
     boolean isForced = false;
 
     public void onButtonClick(View view) {
