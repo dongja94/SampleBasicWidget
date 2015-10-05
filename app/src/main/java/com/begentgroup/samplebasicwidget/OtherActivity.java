@@ -1,13 +1,16 @@
 package com.begentgroup.samplebasicwidget;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +18,14 @@ public class OtherActivity extends AppCompatActivity {
 
     EditText passwordView;
 
+    ImageView imageView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
+        imageView = (ImageView)findViewById(R.id.imageView);
         passwordView = (EditText)findViewById(R.id.editText2);
         passwordView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -51,5 +58,12 @@ public class OtherActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void onButtonClick(View view) {
+        Drawable d = imageView.getDrawable();
+        int level = d.getLevel();
+        level = (level + 1000) % 11000;
+        d.setLevel(level);
     }
 }
