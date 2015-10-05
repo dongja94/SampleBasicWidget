@@ -26,7 +26,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:hint="your name" />
+        android:hint="your name"
+        android:nextFocusDown="@+id/editText2"
+        android:singleLine="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +51,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editText"
         android:layout_alignEnd="@+id/editText"
-        android:hint="password" />
+        android:hint="password"
+        android:imeOptions="actionSend"
+        android:singleLine="true"
+        android:textColor="#ff0000"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
